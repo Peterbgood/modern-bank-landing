@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# 🏦 Modern Bank Landing
+**A high-performance Fintech landing page built with React 19, TypeScript, and Tailwind CSS v4.**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Deploy to GitHub Pages](https://github.com/Peterbgood/modern-bank-landing/actions/workflows/deploy.yml/badge.svg)](https://github.com/Peterbgood/modern-bank-landing/actions)
 
-Currently, two official plugins are available:
+### 🔗 [Live Demo](https://peterbgood.github.io/modern-bank-landing/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Overview
+This project is a professional-grade frontend prototype designed to demonstrate modern web development patterns, responsive design, and automated CI/CD workflows. It features a modular component architecture and a sleek "glassmorphic" UI tailored for the financial services industry.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+* **Framework:** [React 19](https://react.dev/)
+* **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (Using the new `@theme` engine)
+* **Language:** [TypeScript](https://www.typescriptlang.org/) (Strict mode for type safety)
+* **Routing:** [React Router 7](https://reactrouter.com/) (Client-side routing with dynamic basename)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Deployment:** GitHub Actions (Automated build and deploy pipeline)
 
-## Expanding the ESLint configuration
+## ✨ Key Features
+* **Responsive UI:** Fully optimized for mobile, tablet, and desktop views.
+* **Type-Safe Routing:** Implemented `BrowserRouter` with environment-aware `basename` logic to handle GitHub Pages sub-directory hosting.
+* **CI/CD Pipeline:** Automated deployment workflow that builds the project and deploys to GitHub Pages on every push to `main`.
+* **Modular Components:** Reusable UI elements (Buttons, Cards, Nav) built with a focus on DRY (Don't Repeat Yourself) principles.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🔧 Engineering Highlights
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Dynamic Routing Logic
+To solve the common "blank page" issue on GitHub Pages, I implemented a dynamic basename check in `main.tsx`:
+```typescript
+const BASE_URL: string = import.meta.env.DEV ? '/' : '/modern-bank-landing';
